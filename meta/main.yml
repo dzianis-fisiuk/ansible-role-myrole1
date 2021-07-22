@@ -7,6 +7,11 @@ galaxy_info:
   issue_tracker_url: https://github.com/lean-delivery/ansible-role-myrole1/issues
   license: Apache
   min_ansible_version: 2.8
-  platforms: [{name: [EL], versions: [7]}]
-  galaxy_tags: [development, system]
+  platforms:
+    - name: EL
+      versions:
+      - 7
+  galaxy_tags:
+    - development
+    - system
 dependencies: []
