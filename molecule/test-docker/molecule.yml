@@ -1,0 +1,30 @@
+---
+dependency:
+  name: galaxy
+  options:
+    role-file: requirements.yml
+driver:
+  name: 'docker'
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+  ansible-lint
+platforms:
+  - name: 'test-docker-oraclelinux7-myrole1-${MOLECULE_USER:-$USER}'
+    image: 'oraclelinux:7'
+    pre_build_image: true
+    privileged: 'true'
+    groups:
+      - 'myrole1'
+    command: '/usr/sbin/init'
+    tty: true
+provisioner:
+  name: ansible
+  log: true
+  playbooks:
+    verify: ../resources/tests/verify.yml
+scenario:
+  name: 'test-docker'
+verifier:
+  name: ansible
