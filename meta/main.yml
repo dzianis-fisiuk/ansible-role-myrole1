@@ -1,9 +1,9 @@
 ---
 galaxy_info:
   role_name: myrole1
-  author: Lean Delivery Team <team@lean-delivery.com>
+  author: Testing ansible role
   description: Yet Another Ansible Role From Lean Delivery
-  company: EPAM Systems
+  company: Workplace
   issue_tracker_url: https://github.com/lean-delivery/ansible-role-myrole1/issues
   license: Apache
   min_ansible_version: 2.8
