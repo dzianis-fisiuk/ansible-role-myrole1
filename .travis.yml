@@ -24,7 +24,7 @@ install:
   # - pip3 install git+https://github.com/ansible/ansible-lint.git
   # - ansible --version
   # - ansible-lint --version
-  - docker-compose -f docker-compose.yml run ansible-community/toolset
+  - docker-compose -f docker-compose.yml run ansible-community-toolset
 script:
   - yamllint . -c .yamllint
   - ansible-lint . -c .ansible-lint

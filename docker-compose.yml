@@ -1,9 +1,9 @@
 version: "3.9"
 services:
-    ansible-community/toolset:
+    ansible-community-toolset:
         build: .
-        container_name: 'molecule-ansible-${USER}'
-        hostname: 'molecule-ansible-${USER}'
+        container_name: 'ansible-community-toolset-${USER}'
+        hostname: 'ansible-community-toolset-${USER}'
         volumes:
             - '/var/run/docker.sock:/var/run/docker.sock'
             #- '${HOME}/.vault_password_file:/root/.vault_password'
