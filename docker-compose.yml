@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+    molecule:
+        build: .
+        container_name: 'molecule-ansible-${USER}'
+        hostname: 'molecule-ansible-${USER}'
+        volumes:
+            - '/var/run/docker.sock:/var/run/docker.sock'
+            #- '${HOME}/.vault_password_file:/root/.vault_password'
+            #- '${HOME}/.docker/config.json:/root/.docker/config.json:ro'
+            - '${HOME}/workplace/ansible-roles:/root/workplace/ansible-roles:ro'
+            - '${HOME}/workplace/ansible-development-kit:/root/workplace/ansible-development-kit:ro'
+        environment:
+            MOLECULE_NO_LOG: "false"
+            #ANSIBLE_VAULT_PASSWORD_FILE: "/root/.vault_password_file"
+            MOLECULE_USER: ${USER}
+            #ANSIBLE_LIBRARY: '/root/ansible/modules'
+        working_dir: '/root/workplace'
