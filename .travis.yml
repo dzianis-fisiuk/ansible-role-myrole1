@@ -14,7 +14,7 @@ before_install:
 
 install:
   - pip3 install --upgrade docker
-  - pip3 install ansible-core=2.11.1 ansible-lint=5.0.12 ansible=4.0.0
+  - pip3 install ansible-core==2.11.1 ansible-lint==5.0.12 ansible==4.0.0
   - pip3 install molecule==3.3.4
   - pip3 install git+https://github.com/ansible/ansible-lint.git
   - ansible --version
