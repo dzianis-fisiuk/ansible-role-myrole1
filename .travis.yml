@@ -9,12 +9,12 @@ python:
 services:
   - docker
 
-evn: 
+evn:
  - DOCKER_COMPOSE_VERSION=1.29.2
-
+ - DOCKER_REGISTRY_URL=https://github.com/docker/compose/releases/download
 before_install:
-#  - git clone https://github.com/lean-delivery/ansible-lint-rules.git ~/ansible-lint-rules
-  - sudo curl -L "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  #- git clone https://github.com/dzianis-fisiuk/ansible-lint-rules.git ~/ansible-lint-rules
+  - sudo curl -L "${DOCKER_REGISTRY_URL}/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
   - sudo chmod +x /usr/local/bin/docker-compose
 
 install:
@@ -24,11 +24,14 @@ install:
   # - pip3 install git+https://github.com/ansible/ansible-lint.git
   # - ansible --version
   # - ansible-lint --version
-  - docker-compose -f docker-compose.yml run ansible-community-toolset
+  #- docker-compose -f docker-compose.yml run toolset
+  - docker-compose up --build --detach
 script:
-  - yamllint . -c .yamllint
-  - ansible-lint . -c .ansible-lint
-  - molecule test -s test-docker
+  docker ps
+  docker exec toolset yamllint . -c .yamllint
+  docker exec toolset ansible-lint . -c .ansible-lint
+  docker exec toolset molecule test -s test-docker
+  docker rm -f toolset
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

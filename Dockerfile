@@ -12,3 +12,4 @@ which docker && \
 docker --version && \
 podman --version && \
 git --version
+RUN git clone https://github.com/dzianis-fisiuk/ansible-lint-rules.git ~/ansible-lint-rules

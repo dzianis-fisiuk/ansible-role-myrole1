@@ -1,18 +1,24 @@
+---
 version: "3.9"
 services:
-    ansible-community-toolset:
+    toolset:
         build: .
-        container_name: 'ansible-community-toolset-${USER}'
-        hostname: 'ansible-community-toolset-${USER}'
+        container_name: 'toolset'
+        hostname: 'toolset'
+        stdin_open: true # docker run -i
+        tty: true        # docker run -t
+        command: /bin/bash
         volumes:
             - '/var/run/docker.sock:/var/run/docker.sock'
             #- '${HOME}/.vault_password_file:/root/.vault_password'
             #- '${HOME}/.docker/config.json:/root/.docker/config.json:ro'
-            - '${HOME}/workplace/ansible-roles:/root/workplace/ansible-roles:ro'
-            - '${HOME}/workplace/ansible-development-kit:/root/workplace/ansible-development-kit:ro'
+            #- '${HOME}/workplace/ansible-roles:/root/workplace/ansible/roles:ro'
+            #- '${HOME}/workplace/ansibfle-development-kit:/root/workplace/ansible-development-kit:ro'
+            - '${PWD}:${PWD}:ro'
+
         environment:
             MOLECULE_NO_LOG: "false"
             #ANSIBLE_VAULT_PASSWORD_FILE: "/root/.vault_password_file"
-            MOLECULE_USER: ${USER}
+            MOLECULE_USER: '${USER}'
             #ANSIBLE_LIBRARY: '/root/ansible/modules'
-        working_dir: '/root/workplace'
+        working_dir: '${PWD}'
