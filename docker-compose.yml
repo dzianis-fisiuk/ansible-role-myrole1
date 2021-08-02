@@ -10,6 +10,7 @@ services:
         command: /bin/bash
         volumes:
             - '/var/run/docker.sock:/var/run/docker.sock'
+            - '~/workplace/ansible-lint-rules:/root/ansible-lint-rules:ro'
             #- '${HOME}/.vault_password_file:/root/.vault_password'
             #- '${HOME}/.docker/config.json:/root/.docker/config.json:ro'
             #- '${HOME}/workplace/ansible-roles:/root/workplace/ansible/roles:ro'
