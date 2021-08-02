@@ -16,7 +16,7 @@ before_install:
   #- git clone https://github.com/dzianis-fisiuk/ansible-lint-rules.git ~/ansible-lint-rules
   - sudo curl -L "${DOCKER_REGISTRY_URL}/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
   - sudo chmod +x /usr/local/bin/docker-compose
-
+  - ls -l /usr/local/bin/docker-compose
 install:
   # - pip3 install --upgrade docker
   # - pip3 install ansible-core==2.11.1 ansible-lint==5.0.12 ansible==4.0.0 yamllint==1.26.1
