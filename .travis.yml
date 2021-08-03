@@ -9,9 +9,9 @@ python:
 services:
   - docker
 
-evn:
- - DOCKER_COMPOSE_VERSION=1.29.2
- - DOCKER_REGISTRY_URL=https://github.com/docker/compose/releases/download
+env:
+  - DOCKER_COMPOSE_VERSION=1.29.2
+  - DOCKER_REGISTRY_URL=https://github.com/docker/compose/releases/download
 before_install:
   #- git clone https://github.com/dzianis-fisiuk/ansible-lint-rules.git ~/ansible-lint-rules
   - sudo curl -L "${DOCKER_REGISTRY_URL}/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
